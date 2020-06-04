@@ -15,6 +15,7 @@
     @include('templates.partial.navigation')
 
     <div class="container">
+        @include('templates.partial.alerts')
         @yield('content')
     </div>
 
