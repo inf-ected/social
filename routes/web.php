@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','HomeController@index')->name('home');
 
+/*authorization routs*/
+Route::get('/signup','AuthController@getSignup')->name('auth.signup');
+Route::post('/signup','AuthController@postSignup');
 
-Route::get('/alert', function(){ return redirect()->route('home')->with('info','тест сообщения!');
-});
+
+// Route::get('/alert', function(){ return redirect()->route('home')->with('info','тест сообщения!');
+// });
