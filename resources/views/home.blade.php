@@ -1,3 +1,8 @@
 
+@extends('templates.default')
 
-<h1>home</h1>
+
+@section('content')
+    <h2>Home</h2>
+<p>Добропожаловать !</p>
+@endsection
