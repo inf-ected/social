@@ -15,6 +15,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+     // поля таблицы USERS
     protected $fillable = [
         'email',
         'username',
@@ -41,4 +43,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //мой пользовательский метод
+    public function getName()
+    {
+        if ($this->first_name && $this->last_name) {
+            return "{$this->first_name} {$this->last_name}";
+        }
+        if ($this->first_name) {
+            return "{$this->first_name} ";
+        }
+        return null;
+    }
+    public function getNameOrUsername()
+    {
+        return $this->getName() ?: $this->username;
+    }
+    public function getFirstNameOrUsername()
+    {
+        return $this->first_name ?: $this->username;
+    }
 }
