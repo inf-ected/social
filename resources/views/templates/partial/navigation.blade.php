@@ -30,7 +30,7 @@
                     <a href="#" class="nav-link">Обновить профиль</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link">Выйти</a>
+                <a href="{{route('auth.signout')}}" class="nav-link">Выйти</a>
                 </li>
             @else
           <li class="nav-item"><a href="{{route('auth.signup')}}" class="nav-link">Зарегистрироваться</a></li>

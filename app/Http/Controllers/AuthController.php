@@ -48,4 +48,8 @@ class AuthController extends Controller
         }
         return redirect()->route('home')->with('info', 'вы вошли!');
     }
+    public function getSignout(){
+        Auth::logout();
+        return redirect()->route('home')->with('info','вы вышли, пока-пока, чмокЕ, заходи ещё!');
+    }
 }

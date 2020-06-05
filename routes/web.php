@@ -22,5 +22,8 @@ Route::post('/signup','AuthController@postSignup');
 Route::get('/signin','AuthController@getSignin')->name('auth.signin');
 Route::post('/signin','AuthController@postSignin');
 
+Route::get('/signout','AuthController@getSignout')->name('auth.signout');
+
+
 // Route::get('/alert', function(){ return redirect()->route('home')->with('info','тест сообщения!');
 // });
