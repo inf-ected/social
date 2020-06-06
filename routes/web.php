@@ -31,6 +31,11 @@ Route::post('/signin','AuthController@postSignin')
 Route::get('/signout','AuthController@getSignout')
 ->name('auth.signout');
 
+//Search routs
+Route::get('/search','SearchController@getResults')
+->name('search.results');
+
+
 
 // Route::get('/alert', function(){ return redirect()->route('home')->with('info','тест сообщения!');
 // });

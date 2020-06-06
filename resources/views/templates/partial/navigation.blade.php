@@ -15,8 +15,8 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Друзья</a>
             </li>
-            <form class="form-inline my-2 ml-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Что искать?" aria-label="Search">
+        <form method="GET" action="{{route('search.results')}}" class="form-inline my-2 ml-2 my-lg-0">
+              <input name="query" class="form-control mr-sm-2" type="search" placeholder="Что искать?" aria-label="Search">
               <button class="btn btn-success my-2 my-sm-0" type="submit">Найти</button>
             </form>
           </ul>
