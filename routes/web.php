@@ -35,7 +35,9 @@ Route::get('/signout','AuthController@getSignout')
 Route::get('/search','SearchController@getResults')
 ->name('search.results');
 
-
+//Profile
+Route::get('/user/{username}','ProfileController@getProfile')
+->name('profile.index');
 
 // Route::get('/alert', function(){ return redirect()->route('home')->with('info','тест сообщения!');
 // });
