@@ -45,6 +45,15 @@ Route::get('/profile/edit/','ProfileController@getEdit')
 
 Route::post('/profile/edit','ProfileController@postEdit')
 ->middleware('auth');
+
+
+//Profile
+Route::get('/friends','FriendController@getIndex')
+->middleware('auth')
+->name('friend.index');
+
+
+
 //->name('profile.edit');
 // Route::get('/alert', function(){ return redirect()->route('home')->with('info','тест сообщения!');
 // });
