@@ -67,7 +67,7 @@ class User extends Authenticatable
     {
         return "https://www.gravatar.com/avatar/" . md5(strtolower((trim($this->email)))) . "?d=mp&s=40";
     }
-//устанавливаем внешний ключ ?
+    //устанавливаем внешний ключ ?
     public function friendsOfMine()
     {
         return $this->belongsToMany('App\Models\User', 'friends', 'user_id', 'friend_id');
@@ -76,9 +76,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\User', 'friends', 'friend_id', 'user_id');
     }
-    public function friends(){
-        return $this->friendsOfMine()->wherePivot('accepted',true)->get()
-            ->merge($this->friendOf()->wherePivot('accepted',true)->get());
+    //
+    public function friends()
+    {
+        return $this->friendsOfMine()->wherePivot('accepted', true)->get()
+            ->merge($this->friendOf()->wherePivot('accepted', true)->get());
     }
-
+    public function friendsRequests()
+    {
+        return $this->friendsOfMine()->wherePivot('accepted', false)->get();
+    }
 }

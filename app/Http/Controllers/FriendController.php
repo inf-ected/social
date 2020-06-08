@@ -11,8 +11,9 @@ class FriendController extends Controller
 
 public function getIndex(){
     $friends= Auth::user()->friends();
+    $requests=Auth::user()->friendsRequests();
     // dd($friends);
-    return view('friends.index')->with('friends',$friends);
+    return view('friends.index')->with(compact('friends','requests'));
 }
 
 
