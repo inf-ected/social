@@ -52,7 +52,12 @@ Route::get('/friends','FriendController@getIndex')
 ->middleware('auth')
 ->name('friend.index');
 
-
+Route::get('/friends/deny/{id}','FriendController@DelRequest')
+->middleware('auth')
+->name('friend.delrequest');
+Route::get('/friends/accept/{id}','FriendController@AcceptRequest')
+->middleware('auth')
+->name('friend.acceptrequest');
 
 //->name('profile.edit');
 // Route::get('/alert', function(){ return redirect()->route('home')->with('info','тест сообщения!');

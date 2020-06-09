@@ -23,9 +23,13 @@
         @else
             @foreach ($requests as $user)
                 @include('user.partial.userblock')
-                <a href="#"><button>принять</button></a>
-                <a href="#"><button>отклонить</button></a>
-
+                <a href="{{route('friend.acceptrequest',$user->id)}}">
+                    <button class="btn btn-primary mb-2">принять</button>
+                </a>
+                <a href="{{route('friend.delrequest',$user->id)}}">
+                    <button class="btn btn-danger mb-2">отклонить</button>
+                </a>
+                {{--dump($user)--}}
             @endforeach
         @endif
 
