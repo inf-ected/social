@@ -23,6 +23,9 @@
         @else
             @foreach ($requests as $user)
                 @include('user.partial.userblock')
+                <a href="#"><button>принять</button></a>
+                <a href="#"><button>отклонить</button></a>
+
             @endforeach
         @endif
 
