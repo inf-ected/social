@@ -86,4 +86,40 @@ class User extends Authenticatable
     {
         return $this->friendsOfMine()->wherePivot('accepted', false)->get();
     }
+    #запрос на ожидание друга
+    public function friendsRequestsPending()
+    {
+        return $this->friendOf()->wherePivot('accepted', false)->get();
+    }
+    #есть ли запрос на добавление в друзя
+    public function hasfriendsRequestsPending(User $user)
+    {
+        return (bool) $this->friendsRequestsPending()->where('id', $user->id)->count();
+    }
+
+    #получил запрос дружбы
+    public function hasfriendsRequestsКусшмув(User $user)
+    {
+        return (bool) $this->friendsRequests()->where('id', $user->id)->count();
+    }
+
+    # добавить друга
+    public function addFriend(User $user)
+    {
+        $this->friendOf()->attach($user->id);
+    }
+
+    # принять запрос на дружбу
+    public function acceptFriendRequest(User $user)
+    {
+        $this->friendRequests()->where('id', $user->id)->first()->pivot()->update([
+            'accepted' => true
+        ]);
+    }
+
+    # пользователь уже в друзьях
+    public function isFriendWith(User $user)
+    {
+        return (bool) $this->friends()->where('id', $user->id)->count();
+    }
 }
