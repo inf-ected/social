@@ -98,7 +98,7 @@ class User extends Authenticatable
     }
 
     #получил запрос дружбы
-    public function hasfriendsRequestsКусшмув(User $user)
+    public function hasFriendsRequestReceived(User $user)
     {
         return (bool) $this->friendsRequests()->where('id', $user->id)->count();
     }
