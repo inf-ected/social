@@ -47,17 +47,24 @@ Route::post('/profile/edit','ProfileController@postEdit')
 ->middleware('auth');
 
 
-//Profile
+//Friend
 Route::get('/friends','FriendController@getIndex')
 ->middleware('auth')
 ->name('friend.index');
 
+//my old version
 Route::get('/friends/deny/{id}','FriendController@DelRequest')
 ->middleware('auth')
 ->name('friend.delrequest');
 Route::get('/friends/accept/{id}','FriendController@AcceptRequest')
 ->middleware('auth')
 ->name('friend.acceptrequest');
+
+Route::get('/friends/add/{username}','FriendController@getAdd')
+->middleware('auth')
+->name('friend.add');
+
+
 
 //->name('profile.edit');
 // Route::get('/alert', function(){ return redirect()->route('home')->with('info','тест сообщения!');
