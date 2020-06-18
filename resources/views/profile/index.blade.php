@@ -9,16 +9,16 @@
 
   <div class="col-lg-4 col-lg-offset-3">
 
-     @if ( Auth::user()->hasfriendsRequestsPending($user) )
+     {{-- @if ( Auth::user()->hasFriendsRequestsPending($user) )
          <p>В ожидании {{ $user->getFirstNameOrUsername() }}
          подтверждения запроса в друзья.</p>
      @elseif ( Auth::user()->hasFriendsRequestReceived($user) )
-         <a href="{{-- route('friend.accept', ['username' => $user->username]) --}}"
+         <a href="{{ route('friend.accept', ['username' => $user->username]) }}"
             class="btn btn-primary mb-2">Подтвердить дружбу</a>
      @elseif ( Auth::user()->isFriendWith($user) )
          {{ $user->getFirstNameOrUsername() }} у Вас в друзьях.
 
-         <form action="{{-- route('friend.delete', ['username' => $user->username]) --}}"
+         <form action="{{ route('friend.delete', ['username' => $user->username]) }}"
                method="POST">
             @csrf
             <input type="submit" class="btn btn-danger my-2" value="Удалить из друзей">
@@ -26,7 +26,22 @@
      @elseif ( Auth::user()->id !== $user->id )
          <a href="{{ route('friend.add', ['username' => $user->username]) }}"
             class="btn btn-primary mb-2">Добавить в друзья</a>
-     @endif
+     @endif --}}
+
+     @if ( Auth::user()->hasFriendRequestPending($user) )
+            <p>В ожидании {{ $user->getFirstNameOrUsername() }}
+            подтверждения запроса в друзья.</p>
+    @elseif ( Auth::user()->hasFriendRequestReceived($user) )
+            <a href="{{ route('friend.accept', ['username' => $user->username]) }}"
+                class="btn btn-primary mb-2">Подтвердить дружбу</a>
+    @elseif ( Auth::user()->isFriendWith($user) )
+            {{ $user->getFirstNameOrUsername() }} у Вас в друзьях.
+    @elseif ( Auth::user()->id !== $user->id )
+            <a href="{{ route('friend.add', ['username' => $user->username]) }}"
+            class="btn btn-primary mb-2">Добавить в друзья</a>
+    @endif
+
+
 
      <h4>{{ $user->getFirstNameOrUsername() }} друзья</h4>
 

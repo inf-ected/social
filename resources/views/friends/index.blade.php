@@ -3,6 +3,9 @@
 
 
 @section('content')
+
+{{-- {{ dd($friends) }} --}}
+
 <div class="row">
     <div class="col-lg-6">
         <h3>Ваши друзья</h3>
@@ -23,12 +26,12 @@
         @else
             @foreach ($requests as $user)
                 @include('user.partial.userblock')
-                <a href="{{route('friend.acceptrequest',$user->id)}}">
+                {{-- <a href="{{route('friend.acceptrequest',$user->id)}}">
                     <button class="btn btn-primary mb-2">принять</button>
                 </a>
                 <a href="{{route('friend.delrequest',$user->id)}}">
                     <button class="btn btn-danger mb-2">отклонить</button>
-                </a>
+                </a> --}}
                 {{--dump($user)--}}
             @endforeach
         @endif

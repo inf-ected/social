@@ -53,17 +53,19 @@ Route::get('/friends','FriendController@getIndex')
 ->name('friend.index');
 
 //my old version
-Route::get('/friends/deny/{id}','FriendController@DelRequest')
-->middleware('auth')
-->name('friend.delrequest');
-Route::get('/friends/accept/{id}','FriendController@AcceptRequest')
-->middleware('auth')
-->name('friend.acceptrequest');
+// Route::get('/friends/deny/{id}','FriendController@DelRequest')
+// ->middleware('auth')
+// ->name('friend.delrequest');
+// Route::get('/friends/accept/{id}','FriendController@AcceptRequest')
+// ->middleware('auth')
+// ->name('friend.acceptrequest');
 
 Route::get('/friends/add/{username}','FriendController@getAdd')
 ->middleware('auth')
 ->name('friend.add');
-
+Route::get('/friends/accept/{username}','FriendController@getAccept')
+->middleware('auth')
+->name('friend.accept');
 
 
 //->name('profile.edit');
