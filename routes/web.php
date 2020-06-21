@@ -67,6 +67,22 @@ Route::get('/friends/accept/{username}','FriendController@getAccept')
 ->middleware('auth')
 ->name('friend.accept');
 
+#TimeLine - Стена!
+
+Route::post('/status','StatusController@postStatus')
+->middleware('auth')
+->name('status.post');
+
+
+
+
+
+
+
+
+
+
+
 
 //->name('profile.edit');
 // Route::get('/alert', function(){ return redirect()->route('home')->with('info','тест сообщения!');

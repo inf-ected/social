@@ -72,6 +72,10 @@ class User extends Authenticatable
         return "https://www.gravatar.com/avatar/" . md5(strtolower((trim($this->email)))) . "?d=mp&s=40";
     }
     //устанавливаем внешний ключ ?
+    # один ко многим у юзера много статусов
+    public function statuses(){
+        return $this->hasMany('App\Models\Status','user_id');
+    }
     # устанавливаем отношение многие ко многим , мои друзья
     public function friendsOfMine()
     {
