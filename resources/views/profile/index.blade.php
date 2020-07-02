@@ -36,6 +36,12 @@
                 class="btn btn-primary mb-2">Подтвердить дружбу</a>
     @elseif ( Auth::user()->isFriendWith($user) )
             {{ $user->getFirstNameOrUsername() }} у Вас в друзьях.
+
+            <form action="{{ route('friend.delete',['username'=>$user->username])}}" method="post">
+                @csrf
+                <input type="submit" class="btn btn-danger" value="Удалить из друзей">
+            </form>
+
     @elseif ( Auth::user()->id !== $user->id )
             <a href="{{ route('friend.add', ['username' => $user->username]) }}"
             class="btn btn-primary mb-2">Добавить в друзья</a>

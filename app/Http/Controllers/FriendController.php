@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+//use Auth;
 use Illuminate\Support\Facades\DB;
-//use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
@@ -46,14 +46,15 @@ class FriendController extends Controller
     public function getAdd($username)
     {
         $user = User::where('username', $username)->first();
-        if ( ! $user) {
+        if (!$user) {
             return redirect()
                 ->route('home')
                 ->with('info', 'Юзверь не найден!');
         }
         // запрент на добавление самого себя в друзья
-        if( Auth::user()->id === $user->id )
-        { return redirect()->route('home'); }
+        if (Auth::user()->id === $user->id) {
+            return redirect()->route('home');
+        }
 
         if (
             Auth::user()->hasFriendRequestPending($user) ||
@@ -70,8 +71,8 @@ class FriendController extends Controller
         }
         Auth::user()->addFriend($user);
         return redirect()
-            ->route('profile.index',['username'=>$username])
-            ->with('info','Пользователю отправлен запрос в друзья');
+            ->route('profile.index', ['username' => $username])
+            ->with('info', 'Пользователю отправлен запрос в друзья');
     }
     public function getAccept($username)
     {
@@ -82,15 +83,24 @@ class FriendController extends Controller
                 ->with('info', 'Юзверь не найден!');
         }
 
-        if ( ! Auth::user()->hasFriendRequestReceived($user) )
-        { return redirect()->route('home');  }
+        if (!Auth::user()->hasFriendRequestReceived($user)) {
+            return redirect()->route('home');
+        }
 
         Auth::user()->acceptFriendRequest($user);
 
         return redirect()
-            ->route('profile.index',['username'=>$username])
-            ->with('info','Запрос в друзья олдобрен !');
+            ->route('profile.index', ['username' => $username])
+            ->with('info', 'Запрос в друзья олдобрен !');
     }
 
-
+    public function postDelete($username)
+    {
+        $user = User::where('username', $username)->first();
+        if (!Auth::user()->isFriendWith($user)) {
+            return redirect()->back();
+        }
+        Auth::user()->DeleteFriend($user);
+        return redirect()->back()->with('info', 'удален из друзей');
+    }
 }

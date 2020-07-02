@@ -66,6 +66,9 @@ Route::get('/friends/add/{username}','FriendController@getAdd')
 Route::get('/friends/accept/{username}','FriendController@getAccept')
 ->middleware('auth')
 ->name('friend.accept');
+Route::post('/friends/delete/{username}','FriendController@postDelete')
+->middleware('auth')
+->name('friend.delete');
 
 #TimeLine - Стена!
 
