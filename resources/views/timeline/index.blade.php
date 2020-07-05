@@ -90,9 +90,9 @@
                         @endif
 
                 </div>
-                <input type="submit" class="btn btn-primary btn-sm" value="Ответить">
+                <input type="submit" class="btn btn-secondary btn-sm" value="Ответить">
             </form>
-
+            <hr>
             </div>
         </div>
     @endforeach
