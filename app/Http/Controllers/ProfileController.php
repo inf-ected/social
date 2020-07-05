@@ -18,7 +18,10 @@ class ProfileController extends Controller
         if (!$user) {
             abort(404);
         }
-        return view('profile.index', compact('user'));
+        $statuses= $user->statuses()->notReply()->get();
+        $authUserIsFriend=Auth::user()->isFriendWith($user);
+
+        return view('profile.index', compact('user','statuses','authUserIsFriend'));
     }
 
     public function getEdit()
@@ -41,4 +44,7 @@ class ProfileController extends Controller
         ]);
         return redirect()->route('profile.edit')->with('info','профиль обновлен!');
     }
+
+
+
 }

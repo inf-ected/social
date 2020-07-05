@@ -32,7 +32,9 @@
       <p>Пока нет ни одной записи на стене:(</p>
   @else
     @foreach ($statuses as $status)
-        <div class="media">
+        <div class="media"
+        {{-- style="border:1px solid black;" --}}
+        >
         <a class="mr-3" href="{{ route('profile.index', ['username' => $status->user->username]) }}">
         <img class="media-object rounded" src="{{ $status->user->getAvatarUrl() }}"
             alt="{{ $status->user->getNameOrUsername() }}">
