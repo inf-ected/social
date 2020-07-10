@@ -9,15 +9,75 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('style.css')}}">
   <title>Социальная сеть {{config('app.name')}}</title>
-  </head>
-  <body>
+  {{-- <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
 
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    /* .container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+} */
+
+.footer {
+    /* position: absolute;
+    bottom:0;
+    width: 100%;
+    background-color: #f5f5f5; */
+}
+  </style> --}}
+
+
+  </head>
+  <body class="">
     @include('templates.partial.navigation')
 
-    <div class="container">
+    <body class="d-flex flex-column h-100">
+        <!-- Begin page content -->
+    <main role="main" class="flex-shrink-0">
+      <div class="container">
+        @include('templates.partial.alerts')
+        @yield('content')
+      </div>
+    </main>
+
+    <footer class="fixed-bottom bg-primary text-light mt-3">
+      <div class="container">
+        <div class="text-center py-3">My Majesty ©{{ date('Y') }}
+            <a href="{{ route('home') }}"> Social</a>
+          </div>
+      </div>
+    </footer>
+    {{-- </body> --}}
+
+
+{{--
+    @include('templates.partial.navigation')
+
+    <div class="container ">
         @include('templates.partial.alerts')
         @yield('content')
     </div>
+
+    <footer class="footer bg-primary text-light mt-auto py-3 ">
+        <div class="container">
+            <div class="text-center py-3">My Majesty ©{{ date('Y') }}
+                <a href="{{ route('home') }}"> Social</a>
+              </div>
+        </div>
+    </footer> --}}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
